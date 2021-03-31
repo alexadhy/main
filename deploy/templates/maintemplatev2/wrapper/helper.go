@@ -143,6 +143,7 @@ func NewMainCLI(
 		dialOpts = append(dialOpts, grpc.WithTransportCredentials(creds))
 		cliOpts = clihelper.CLIWrapper(mainCfg.TLS.RootCAPath, hostPort, ".env")
 	} else if mainCfg.TLS.Enable && mainCfg.IsLocal {
+		logger.Infof("loading certificate from local: %v", mainCfg.TLS.RootCAPath)
 		creds, err := certutils.ClientLoadCA(mainCfg.TLS.RootCAPath)
 		if err != nil {
 			return nil, fmt.Errorf("unable to load CA Root path: %v", err)
