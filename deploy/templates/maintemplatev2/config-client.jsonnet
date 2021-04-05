@@ -23,8 +23,8 @@ local config = {
     },
     // main
     mainConfig: {
-     domain: loadVar("MAIN", env="DOMAIN").val,
-     port: std.parseInt(loadVar("MAIN", env="PORT").val),
+     serverHost: loadVar("MAIN", env="SERVER_HOST").val,
+     serverPort: std.parseInt(loadVar("MAIN", env="SERVER_PORT").val),
      isLocal: stringToBool(loadVar("MAIN", env="IS_LOCAL").val),
      tls: s.TLSConfig,
     },

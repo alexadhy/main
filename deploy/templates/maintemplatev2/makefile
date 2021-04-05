@@ -65,6 +65,8 @@ MAIN_TLS_LOCAL = true
 MAIN_DOMAIN = $(FRONTEND_URL_WEB)
 MAIN_HOST = $(FRONTEND_HOST)
 MAIN_PORT = $(FRONTEND_PORT)
+MAIN_SERVER_HOST = "localhost"
+MAIN_SERVER_PORT = $(FRONTEND_PORT)
 MAIN_IS_LOCAL = true
 MAIN_EMBED_DIR = $(FRONTEND_ABS_PREFIX)
 
@@ -136,7 +138,7 @@ gen-delete:
 config-delete:
 	rm -rf $(CONFIG_OUTPUT_DIR)/*
 
-config-gen: config-dep
+config-gen: #config-dep
 	mkdir -p $(CONFIG_OUTPUT_DIR)
 	@echo Generating Config
 	# OVERRIDES IF you need them
@@ -155,8 +157,8 @@ config-gen: config-dep
 		-V MAIN_TLS_ENABLE=$(MAIN_TLS_ENABLE) \
 		-V MAIN_TLS_LOCAL=$(MAIN_TLS_LOCAL) \
 		-V MAIN_DOMAIN=$(MAIN_DOMAIN) \
-		-V MAIN_HOST=$(MAIN_HOST) \
-		-V MAIN_PORT=$(MAIN_PORT) \
+		-V MAIN_SERVER_HOST=$(MAIN_SERVER_HOST) \
+		-V MAIN_SERVER_PORT=$(MAIN_PORT) \
 		-V MAIN_IS_LOCAL=$(MAIN_IS_LOCAL) \
 		-V MAIN_EMBED_DIR=$(MAIN_EMBED_DIR) > $(CONFIG_OUTPUT_DIR)/config-client.yml
 

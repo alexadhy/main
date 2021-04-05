@@ -18,7 +18,6 @@ require (
 	go.amplifyedge.org/sys-share-v2 v0.0.0-00010101000000-000000000000
 	go.amplifyedge.org/sys-v2 v0.0.0-00010101000000-000000000000
 	golang.org/x/net v0.0.0-20210119194325-5f4716e94777
-	golang.org/x/sys v0.0.0-20210113181707-4bcb84eeeb78 // indirect
 	golang.org/x/text v0.3.5 // indirect
 	google.golang.org/genproto v0.0.0-20210114201628-6edceaf6022f // indirect
 	google.golang.org/grpc v1.35.0

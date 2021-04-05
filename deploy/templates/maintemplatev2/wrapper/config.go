@@ -70,18 +70,18 @@ func (c MainServerConfig) validate() error {
 }
 
 type MainClientConfig struct {
-	IsLocal bool      `yaml:"isLocal" json:"isLocal"`
-	Domain  string    `yaml:"domain" json:"domain"`
-	Port    int       `yaml:"port" json:"port"`
-	TLS     TLSConfig `yaml:"tls" json:"tls"`
+	IsLocal    bool      `yaml:"isLocal" json:"isLocal"`
+	ServerHost string    `yaml:"serverHost" json:"serverHost"`
+	ServerPort int       `yaml:"serverPort" json:"serverPort"`
+	TLS        TLSConfig `yaml:"tls" json:"tls"`
 }
 
 func (c MainClientConfig) validate() error {
-	if c.Domain == "" {
-		c.Domain = "https://127.0.0.1"
+	if c.ServerHost == "" {
+		c.ServerHost = "https://127.0.0.1"
 	}
-	if c.Port == 0 {
-		c.Port = 8080
+	if c.ServerPort == 0 {
+		c.ServerPort = 8080
 	}
 	return c.TLS.validate()
 }

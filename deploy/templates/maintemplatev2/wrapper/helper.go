@@ -132,13 +132,13 @@ func NewMainCLI(
 	ctx, cancel := context.WithTimeout(context.Background(), defaultTimeout)
 	defer cancel()
 
-	hostPort := fmt.Sprintf("%s:%d", mainCfg.Domain, mainCfg.Port)
+	hostPort := fmt.Sprintf("%s:%d", mainCfg.ServerHost, mainCfg.ServerPort)
 
 	if !mainCfg.IsLocal && mainCfg.TLS.Enable {
-		err := certutils.DownloadCACert(mainCfg.TLS.RootCAPath, mainCfg.Domain)
+		err := certutils.DownloadCACert(mainCfg.TLS.RootCAPath, mainCfg.ServerHost)
 		creds, err := certutils.ClientLoadCA(mainCfg.TLS.RootCAPath)
 		if err != nil {
-			return nil, fmt.Errorf("unable to load CA from domain: %s => %v", mainCfg.Domain, err)
+			return nil, fmt.Errorf("unable to load CA from domain: %s => %v", mainCfg.ServerHost, err)
 		}
 		dialOpts = append(dialOpts, grpc.WithTransportCredentials(creds))
 		cliOpts = clihelper.CLIWrapper(mainCfg.TLS.RootCAPath, hostPort, ".env")
